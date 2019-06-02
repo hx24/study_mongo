@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const goods = require('./goods')
+const Good = require('./goods')
 const students = require('./students')
 const teachers = require('./teachers')
 const kitten = require('./kitten')
@@ -11,7 +11,7 @@ mongoose.connection.on('connected', () => {
 })
 
 const models = {
-    goods,
+    Good,
     students,
     teachers,
     kitten

@@ -3,7 +3,7 @@ const Router = express.Router()
 const Models = require('../models')
 const mongoose = require('mongoose')
 
-const Good = Models.getModel('goods')
+const Good = Models.getModel('Good')
 const Kitten = Models.getModel('kitten')
 
 Router.get('/info', (req,res)=>{
@@ -15,7 +15,7 @@ Router.get('/info', (req,res)=>{
     //     }
     // })
 
-    Good.find().exec(function(err, data){
+    Good.find({},'name').exec(function(err, data){
         if(err){
             console.log(err)
         }else{
@@ -53,8 +53,11 @@ Router.get('/cats', (req,res)=>{
 
 Router.get('/find/:name', (req,res)=>{
     console.log(req.params.name)
-    Kitten.findByName(req.params.name,function (err, data) {
-        res.json(data)
+    // Kitten.findByName(req.params.name,function (err, data) {
+    //     res.json(data)
+    // })
+    Kitten.countDocuments({name: new RegExp(req.params.name, 'i')}, function (err,count) {
+        console.log(count)        
     })
 
     Kitten.find().byName(req.params.name,function (err, data) {
