@@ -4,5 +4,5 @@ const initRouter = require('./routers')
 initRouter(app)
 
 app.listen('8000', ()=>{
-    console.log('监听在8000端口');
+    console.log('监听在8000端口 ');
 })
